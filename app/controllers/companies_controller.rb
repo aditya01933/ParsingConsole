@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
 	
 
 	def index
-		@companies = Company.all.page(params[:page]).per(2)
+		@companies = Company.all.page(params[:page])
 	end
 
 end
