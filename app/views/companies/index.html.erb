@@ -1,8 +1,13 @@
 <% @companies.each do |company| %>
-	<h4><%= company.name %></h4>
+	<h4><%= company.name %> || 
+			No. of operations:	<%= company.number_of_operations %> ||
+			Average Amount : <%= company.average_of_amount %> ||
+			Highest of Month: <%= company.highest_of_month%>
+	</h4>
 	<ul>
 		<% company.operations.each do |operation| %>
 			<li><%= operation.id%></li>
+
 		<%end%>
 	</ul>	
 <%end %>	

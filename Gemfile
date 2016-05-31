@@ -33,6 +33,7 @@ gem 'roo', '~> 2.4.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'draper'
 
 group :development, :test do
   gem 'spring-commands-rspec'

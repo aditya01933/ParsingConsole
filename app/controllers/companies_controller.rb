@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
 
 	def index
-		@companies = Company.all
+		@companies = Company.all.decorate
 	end
 
 end
