@@ -14,8 +14,14 @@ class Operation < ActiveRecord::Base
 
   def custom_save
     if imported_operations.all?(&:valid?)
-      imported_operations.each do |t|      	 
-      	t.save!    
+      imported_operations.each do |t| 
+        t.save!
+        category_array = t.kind.split("; ")
+        category_array.each do |name|
+          category = Category.find_or_create_by(name: name) 
+          t.categories << category      
+        end
+        true        	    
       end      
     else
       imported_operations.each_with_index do |product, index|
@@ -32,21 +38,26 @@ class Operation < ActiveRecord::Base
 
   def imported_operations
     spreadsheet = open_spreadsheet
-    header = spreadsheet.row(1)
-   
+    header = spreadsheet.row(1)   
 	  (2..spreadsheet.last_row).map do |i|
-	    row = Hash[[header, spreadsheet.row(i)].transpose]     
-	  	operation = Operation.new 
-	  	company = Company.find_by(name: row["company"])
-
-	    operation.attributes = row.except("company", nil)
-	    if company.nil?
-	    	operation
-	    else
-	    	company.operations.build(row.except("company", nil).merge(company_id: company.id))
-	  	end
+	    row = Hash[[header, spreadsheet.row(i)].transpose] 	  	 
+	  	add_company(row)
 	  end    
 	end
+
+  def add_company(row)
+    operation = Operation.new
+    company = Company.find_by(name: row["company"])
+    operation.attributes = row.except("company", nil)  
+
+    if company.nil?
+      operation
+    else
+      company.operations.build(row.except("company", nil).merge(company_id: company.id))
+    end    
+  end
+
+ 
 
   def open_spreadsheet    
     case File.extname(file.original_filename)
