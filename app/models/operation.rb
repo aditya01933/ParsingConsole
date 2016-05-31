@@ -8,14 +8,15 @@ class Operation < ActiveRecord::Base
   validates_numericality_of :amount, greater_than: 0
   validates_uniqueness_of :invoice_num
 
+  validates :company_id, presence: { message: "not found" }
+
   attr_accessor :file
 
   def custom_save
     if imported_operations.all?(&:valid?)
-      imported_operations.each do |t|        
-        t.save!
-      end
-      true
+      imported_operations.each do |t|      	 
+      	t.save!    
+      end      
     else
       imported_operations.each_with_index do |product, index|
         unless product.valid?
@@ -28,19 +29,22 @@ class Operation < ActiveRecord::Base
     end
   end
 
+
   def imported_operations
     spreadsheet = open_spreadsheet
     header = spreadsheet.row(1)
    
 	  (2..spreadsheet.last_row).map do |i|
-	    row = Hash[[header, spreadsheet.row(i)].transpose]
-	   
-	    company = Company.find_by(name: row["company"])
-	    operation = Operation.new
-	    
+	    row = Hash[[header, spreadsheet.row(i)].transpose]     
+	  	operation = Operation.new 
+	  	company = Company.find_by(name: row["company"])
+
 	    operation.attributes = row.except("company", nil)
-	    company.operations << operation 
-	    operation       
+	    if company.nil?
+	    	operation
+	    else
+	    	company.operations.build(row.except("company", nil).merge(company_id: company.id))
+	  	end
 	  end    
 	end
 
