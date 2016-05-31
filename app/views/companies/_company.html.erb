@@ -1,0 +1,16 @@
+<div class="post">
+<% company_decorator = CompanyDecorator.new(company)%>
+	<h4><%= company.name %> || 
+			No. of operations:	<%= company_decorator.number_of_operations %> ||
+			Average Amount : <%= company_decorator.average_of_amount %> ||
+			Highest of Month: <%= company_decorator.highest_of_month%> ||
+			Accepted Operations: <%= company_decorator.accepted_operations%>
+	</h4>
+	<ul>
+		<% company.operations.each do |operation| %>
+			<li><%= operation.id%></li>
+
+		<%end%>
+	</ul>	
+</div>
+

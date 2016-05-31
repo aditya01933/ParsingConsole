@@ -17,6 +17,10 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+gem 'kaminari', github: 'amatsuda/kaminari'
+
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -33,7 +37,7 @@ gem 'roo', '~> 2.4.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'draper'
+
 
 group :development, :test do
   gem 'spring-commands-rspec'
