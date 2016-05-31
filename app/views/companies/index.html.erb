@@ -1,0 +1,8 @@
+<% @companies.each do |company| %>
+	<h4><%= company.name %></h4>
+	<ul>
+		<% company.operations.each do |operation| %>
+			<li><%= operation.id%></li>
+		<%end%>
+	</ul>	
+<%end %>	
