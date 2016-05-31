@@ -1,0 +1,20 @@
+<%= form_for @operations do |f| %>
+ 	<% if @operations.errors.any? %>
+   <div id="error_explanation">
+     <h2><%= pluralize(@operations.errors.count, "error") %> prohibited this import from completing:</h2>
+     <ul>
+     <% @operations.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+     <% end %>
+     </ul>
+   </div>
+ 	<% end %> 
+
+  <%= f.file_field :file, :class => "inputfile ", :name => "operation[file]", :id =>"file-1", :required => 'required' %>
+	<label for="file-1">Choose a file…</label>
+
+
+  <%= button_tag(type: 'submit', class: "btn btn-info up-btn") do %>
+  		<i class="ikon ikon-upload-2"></i> Upload
+  <% end %>
+<% end -%>  

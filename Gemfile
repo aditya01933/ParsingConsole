@@ -44,5 +44,7 @@ group :development, :test do
   gem 'awesome_print', '~> 1.6', '>= 1.6.1'
   gem 'factory_girl_rails'
   gem 'unirest'
+	gem 'better_errors'
+	gem 'binding_of_caller'
 end
 
