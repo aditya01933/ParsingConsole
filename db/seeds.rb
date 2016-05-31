@@ -3,14 +3,6 @@
 
 companies = ['Monterail, Inc.', 'Ostrzy Entertainment', 'ACME', 'Company X', 'Big Company 1',
              'TT Internet', 'SB Komputery', 'BP Biznes', 'KT Koty', 'MS Szpadel', 'Microsoft',
-             'Hugehard', 'Comcast','Monterail, Inc.', 'Ostrzy Entertainment', 'ACME', 'Company X', 'Big Company 1',
-             'TT Internet', 'SB Komputery', 'BP Biznes', 'KT Koty', 'MS Szpadel', 'Microsoft',
-             'Hugehard', 'Comcast', 'Monterail, Inc.', 'Ostrzy Entertainment', 'ACME', 'Company X', 'Big Company 1',
-             'TT Internet', 'SB Komputery', 'BP Biznes', 'KT Koty', 'MS Szpadel', 'Microsoft',
-             'Hugehard', 'Comcast', 'Monterail, Inc.', 'Ostrzy Entertainment', 'ACME', 'Company X', 'Big Company 1',
-             'TT Internet', 'SB Komputery', 'BP Biznes', 'KT Koty', 'MS Szpadel', 'Microsoft',
-             'Hugehard', 'Comcast', 'Monterail, Inc.', 'Ostrzy Entertainment', 'ACME', 'Company X', 'Big Company 1',
-             'TT Internet', 'SB Komputery', 'BP Biznes', 'KT Koty', 'MS Szpadel', 'Microsoft',
              'Hugehard', 'Comcast']
 
 companies.each do |company|
