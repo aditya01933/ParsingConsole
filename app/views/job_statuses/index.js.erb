@@ -4,3 +4,6 @@
 <%end%>
 <%end%>
 $("#last_time").text("<%= Time.now %>");
+<% if @job.find_by(message: "done").present?%>
+	$("#done").text("done");
+<%end%>		

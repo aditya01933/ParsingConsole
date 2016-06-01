@@ -18,7 +18,7 @@ class OperationWorker
 		  		operation.errors.full_messages
 		  	end	
 		  end
-
+		  JobStatus.create(job_id: self.jid, message: "done")
 	  end
 
 	  private
