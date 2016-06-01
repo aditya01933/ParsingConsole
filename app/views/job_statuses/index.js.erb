@@ -1,2 +1,6 @@
-$('#job-id-container').append("<%= @job.message %>");
+<% unless @job.last.nil? %>
+<%@job.each do |job|%>
+	$('#job-id-container').prepend("<%= job.message %> </br></br>");
+<%end%>
+<%end%>
 $("#last_time").text("<%= Time.now %>");

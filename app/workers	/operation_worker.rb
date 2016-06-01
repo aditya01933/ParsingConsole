@@ -11,13 +11,16 @@ class OperationWorker
 		  	operation = add_company(row)
 		  	if operation.valid?
 		  		operation.save!
+		  		JobStatus.create(job_id: self.jid, message: "row #{i} successfully imported")
 		  	else
-		  		operation.full_messages
+		  		JobStatus.create(job_id: self.jid, message: "error #{operation.errors.full_messages} in row #{i}")
+		  		
+		  		operation.errors.full_messages
 		  	end	
 		  end
 
 	  end
-	  
+
 	  private
 
 	  def add_company(row)

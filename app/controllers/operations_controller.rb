@@ -6,13 +6,9 @@ class OperationsController < ApplicationController
 
 	def create		
 		
-	 	OperationWorker.perform_async(operation_params["file"].path, operation_params["file"].original_filename)	
-
-	  if true
-	    redirect_to '/job_statuses'
-	  else
-	    render :index
-	  end
+	 	OperationWorker.perform_async(operation_params["file"].path, operation_params["file"].original_filename)	  
+	  redirect_to '/job_statuses'
+	  
 	end
 
 	private
