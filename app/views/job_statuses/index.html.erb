@@ -1,0 +1,32 @@
+<h1>Loading data ......</h1>
+
+<div id = "job-id-container">
+	Aditya
+</div>
+Last record updated on :
+<div id = "last_time">
+ <%= Time.now %>
+</div>
+
+
+<script type="text/javascript">
+	function tick() {
+			var time = $("#last_time").text()
+			var data = 'time='+ time
+      var ajaxOpts = {
+            type: "get",
+            url: "/job_statuses",            
+            data: data,
+            cache: false,
+                                   
+        };
+    $.ajax(ajaxOpts);
+    
+    
+    setTimeout('tick()', 1000);
+}
+
+$(document).ready(function() {
+    tick();
+});
+</script>

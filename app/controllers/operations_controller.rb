@@ -9,7 +9,7 @@ class OperationsController < ApplicationController
 	 	OperationWorker.perform_async(operation_params["file"].path, operation_params["file"].original_filename)	
 
 	  if true
-	    redirect_to '/operations', notice: "Import successful."
+	    redirect_to '/job_statuses'
 	  else
 	    render :index
 	  end
