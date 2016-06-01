@@ -20,6 +20,7 @@ gem 'jquery-rails'
 
 gem 'kaminari', github: 'amatsuda/kaminari'
 
+gem 'sidekiq'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'

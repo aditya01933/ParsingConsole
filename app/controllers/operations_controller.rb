@@ -4,11 +4,11 @@ class OperationsController < ApplicationController
 	  @operations = Operation.new	  
 	end
 
-	def create
+	def create		
 		
-	  @operations = Operation.new(file: operation_params[:file])
-	 
-	  if @operations.custom_save
+	 	OperationWorker.perform_async(operation_params["file"].path, operation_params["file"].original_filename)	
+
+	  if true
 	    redirect_to '/operations', notice: "Import successful."
 	  else
 	    render :index

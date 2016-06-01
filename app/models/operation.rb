@@ -10,7 +10,7 @@ class Operation < ActiveRecord::Base
 
   validates :company_id, presence: { message: "not found" }
 
-  attr_accessor :file
+  attr_accessor :file_path, :file_name 
 
   def custom_save
     if imported_operations.all?(&:valid?)
@@ -60,11 +60,11 @@ class Operation < ActiveRecord::Base
  
 
   def open_spreadsheet    
-    case File.extname(file.original_filename)
-    when ".csv" then Roo::CSV.new(file.path)
+    case File.extname(file_name)
+    when ".csv" then Roo::CSV.new(file_path)
     # when ".xls" then Roo::Excel.new(file[:file].path, file_warning: :ignore)
     # when ".xlsx" then Roo::Excelx.new(file[:file].path)
-    else raise "Unknown file type: #{file.original_filename}"
+    else raise "Unknown file type: #{file_name}"
     end
   end
 
