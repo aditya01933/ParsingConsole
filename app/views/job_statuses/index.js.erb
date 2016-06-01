@@ -1,4 +1,4 @@
-<% unless @job.last.nil? %>
+<% unless @job.empty? %>
 <%@job.each do |job|%>
 	$('#job-id-container').prepend("<%= job.message %> </br></br>");
 <%end%>

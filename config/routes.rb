@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   
 
-  resources :operations
+  resources :operations 
+
   resources :companies
   resources :job_statuses
 

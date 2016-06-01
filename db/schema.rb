@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20160601135037) do
   end
 
   create_table "job_statuses", force: :cascade do |t|
-    t.integer  "job_id"
+    t.string   "job_id"
     t.string   "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

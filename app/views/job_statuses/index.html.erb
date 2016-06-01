@@ -7,17 +7,18 @@ Last record updated on :
 <div id = "last_time">
  <%= Time.now %>
 </div>
+<div id="job_id"><%= @job_id%></div>
 
 
 <script type="text/javascript">
 	function tick() {
-			var time = $("#last_time").text()
-			var data = 'time='+ time
+			var time_now = $("#last_time").text();
+			var job_id =  $("#job_id").text();
       var ajaxOpts = {
             type: "get",
             url: "/job_statuses",            
-            data: data,
-            cache: false,
+            data: {time : time_now, job_id : job_id},
+            cache: false
                                    
         };
     $.ajax(ajaxOpts);
