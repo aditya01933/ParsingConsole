@@ -2,6 +2,7 @@ class CompaniesController < ApplicationController
 	
 
 	def index
+		 @operations = Operation.new	 
 		@companies = Company.all.page(params[:page]).per(1)
 	end
 

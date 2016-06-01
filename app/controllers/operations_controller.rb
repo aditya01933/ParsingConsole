@@ -5,10 +5,8 @@ class OperationsController < ApplicationController
 	end
 
 	def create		
-		
 	 	@job_id = OperationWorker.perform_async(operation_params["file"].path, operation_params["file"].original_filename)	  
-	  redirect_to job_statuses_path(job_id: @job_id)
-	  
+	  redirect_to job_statuses_path(job_id: @job_id)	  
 	end
 
 	def operation_csv
