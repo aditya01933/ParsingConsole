@@ -11,6 +11,11 @@ class OperationWorker
 		  	operation = add_company(row)
 		  	if operation.valid?
 		  		operation.save!
+		  		category_array = operation.kind.split("; ")
+	        category_array.each do |name|
+	          category = Category.find_or_create_by(name: name) 
+	          operation.categories << category      
+	        end
 		  		JobStatus.create(job_id: self.jid, message: "row #{i} successfully imported")
 		  	else
 		  		JobStatus.create(job_id: self.jid, message: "error #{operation.errors.full_messages} in row #{i}")
