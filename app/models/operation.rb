@@ -10,5 +10,17 @@ class Operation < ActiveRecord::Base
 
   validates :company_id, presence: { message: "not found" } 
 
+  def self.to_csv
+	  CSV.generate do |csv|	  	
+	  	column_names.insert(0,"company") unless column_names.include?("company")
+	  	new_column = column_names - ["id", "created_at", "updated_at", "company_id"]
+	    csv << new_column
+	    all.each do |result|	    	
+	      csv << result.attributes.values_at(*column_names - ["company","id", "created_at", "updated_at", "company_id"] ).insert(0, result.company.name)
+	    end
+
+	  end
+  end
+
 
 end

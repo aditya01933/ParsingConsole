@@ -6,11 +6,17 @@
 			Highest of Month: <%= company_decorator.highest_of_month%> ||
 			Accepted Operations: <%= company_decorator.accepted_operations%>
 	</h4>
+	<%= link_to "CSV", "/operation_csv.csv?company_id=#{company.id}" %>
+
 	<ul>
 		<% company.operations.each do |operation| %>
-			<li><%= operation.id%></li>
+			<li><%= operation.id%> | <%= operation.invoice_num%> | <%= operation.reporter%> | <%= operation.status%> 
+				
+					<b>Categories: </b><%= operation.kind%>
+				
+			 </li>
 
 		<%end%>
 	</ul>	
-</div>
+	</div>
 

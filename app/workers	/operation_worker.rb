@@ -11,7 +11,7 @@ class OperationWorker
 		  	operation = add_company(row)
 		  	if operation.valid?
 		  		operation.save!
-		  		category_array = operation.kind.split("; ")
+		  		category_array = operation.kind.split(";")
 	        category_array.each do |name|
 	          category = Category.find_or_create_by(name: name) 
 	          operation.categories << category      

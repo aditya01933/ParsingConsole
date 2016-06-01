@@ -11,6 +11,15 @@ class OperationsController < ApplicationController
 	  
 	end
 
+	def operation_csv
+		
+		@operations = Operation.where(company_id: params[:company_id] )
+		respond_to do |format|
+	    format.html
+	    format.csv { send_data @operations.to_csv }
+	  end
+	end
+
 	private
 
 	def operation_params
