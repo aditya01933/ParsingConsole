@@ -10,7 +10,7 @@ class CompanyDecorator
   end
 
   def average_of_amount
-  	company.operations.average(:amount).round || 0
+  	company.operations.average(:amount).try(:round) || 0
   end
 
   def highest_of_month

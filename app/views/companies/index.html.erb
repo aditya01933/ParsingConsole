@@ -4,16 +4,13 @@
 	<%= form_for @operations do |f| %>
 	 	 
 
-	  <%= f.file_field :file, :class => "inputfile ", :name => "operation[file]", :id =>"file-1", :required => 'required' %>
-
-	  <%= button_tag(type: 'submit', class: "btn btn-info") do %>
-	  		 Upload
-	  <% end %>
+	  <%= f.file_field :file, :required => 'required', class: "upload-form" %>
+	  <%= f.submit "upload file", class: 'btn btn-danger filter-text' %>
 	<% end -%>  
 
 
 	<%= form_tag( '/companies', :method => :get ) do %>
-		<%= text_field_tag :filter, nil, placeholder: "id, reporter, status, invoice_num, kind" %>
+		<%= text_field_tag :filter, nil, placeholder: "id, reporter, status, invoice_num, kind", class: 'filter-text' %>
 		<%= submit_tag "Filter"%>
 	<% end %>	
 
