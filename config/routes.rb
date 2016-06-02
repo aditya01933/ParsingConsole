@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :job_statuses
 
   get 'operation_csv' => 'operations#operation_csv'
-
+ 
   root :to => "companies#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

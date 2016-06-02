@@ -2,26 +2,19 @@
 <div class="post">
 <div class="panel panel-default panel-custom">
 	<div class="panel-heading">
-	<% company_decorator = CompanyDecorator.new(company)%>
+	<% @company_decorator = CompanyDecorator.new(company)%>
 		<h4><%= company.name %> || 
-				No. of operations:	<%= company_decorator.number_of_operations %> ||
-				Average Amount : <%= company_decorator.average_of_amount %> ||
-				Highest of Month: <%= company_decorator.highest_of_month%> ||
-				Accepted Operations: <%= company_decorator.accepted_operations%>
+				No. of operations:	<%= @company_decorator.number_of_operations %> ||
+				Average Amount : <%= @company_decorator.average_of_amount %> ||
+				Highest of Month: <%= @company_decorator.highest_of_month%> ||
+				Accepted Operations: <%= @company_decorator.accepted_operations%>
 		</h4>
 		<%= link_to "CSV", "/operation_csv.csv?company_id=#{company.id}" %>
 
 	</div>	
 	
 	<ul>
-		<% company.operations.each do |operation| %>
-			<li><b>ID: </b><%= operation.id%> | <b>Invoice: </b><%= operation.invoice_num%> | <b>Reporter: </b><%= operation.reporter%> |<b>Status: </b> <%= operation.status%> 
-				
-					<b>Categories: </b><%= operation.kind%>
-				
-			 </li>
-
-		<%end%>
+		<%= render partial: "operations", locals:{company: company}%>
 	</ul>	
 	</div>
 	</div>

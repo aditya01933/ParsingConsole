@@ -5,14 +5,17 @@
 	 	 
 
 	  <%= f.file_field :file, :class => "inputfile ", :name => "operation[file]", :id =>"file-1", :required => 'required' %>
-		<label for="file-1">Choose a file…</label>
-
 
 	  <%= button_tag(type: 'submit', class: "btn btn-info") do %>
-	  		<i class="ikon ikon-upload-2"></i> Upload
+	  		 Upload
 	  <% end %>
 	<% end -%>  
 
+
+	<%= form_tag( '/companies', :method => :get ) do %>
+		<%= text_field_tag :filter, nil, placeholder: "id, reporter, status, invoice_num, kind" %>
+		<%= submit_tag "Filter"%>
+	<% end %>	
 
 	<div class="page">
 	  <%= render @companies %>
